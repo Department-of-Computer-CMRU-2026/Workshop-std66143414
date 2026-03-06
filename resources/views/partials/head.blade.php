@@ -12,19 +12,20 @@
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
 
+<!-- Manual Asset Loading to Bypass Vite Directive Error -->
 @php
     $manifestPath = public_path('build/manifest.json');
-    $manifest = file_exists($manifestPath) ? json_decode(file_get_contents($manifestPath), true) : null;
+    $manifest = [];
+    if (file_exists($manifestPath)) {
+        $manifest = json_decode(file_get_contents($manifestPath), true);
+    }
+    
+    $cssFile = $manifest['resources/css/app.css']['file'] ?? 'assets/app-Df3y7Nxw.css';
+    $jsFile = $manifest['resources/js/app.js']['file'] ?? 'assets/app-l0sNRNKZ.js';
 @endphp
 
-@if($manifest)
-    <link rel="stylesheet" href="{{ asset('build/' . $manifest['resources/css/app.css']['file']) }}">
-    <script type="module" src="{{ asset('build/' . $manifest['resources/js/app.js']['file']) }}"></script>
-@else
-    <!-- Fallback if manifest fails - unblocking UI -->
-    <link rel="stylesheet" href="/build/assets/app-Df3y7Nxw.css">
-    <script type="module" src="/build/assets/app-l0sNRNKZ.js"></script>
-@endif
+<link rel="stylesheet" href="/build/{{ $cssFile }}">
+<script type="module" src="/build/{{ $jsFile }}"></script>
 
 @fluxAppearance
 
