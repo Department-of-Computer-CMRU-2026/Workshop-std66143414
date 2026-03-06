@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.bunny.net">
-<link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+<link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700" rel="stylesheet" />
 
 @vite(["resources/css/app.css", "resources/js/app.js"])
 @fluxAppearance
@@ -27,12 +27,12 @@
     body {
         background-color: var(--color-background) !important;
         color: var(--color-accent-foreground) !important;
+        font-weight: 500 !important; /* Slightly bolder base text */
     }
 
-    /* Unify Sidebar and Body background for a cleaner "into it" look */
     [data-flux-sidebar] {
         background-color: var(--color-background) !important;
-        border-right-color: rgba(217, 160, 149, 0.2) !important; /* Subtle rosy border */
+        border-right-color: rgba(217, 160, 149, 0.2) !important;
     }
 
     .bg-surface {
@@ -45,7 +45,13 @@
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05) !important;
     }
 
-    /* Fix sidebar active/hover states - NO MORE WHITE BOXES */
+    /* Primary Button - Forced White Text */
+    [data-flux-button][data-variant="primary"] {
+        color: #ffffff !important;
+        font-weight: 700 !important;
+    }
+
+    /* Sidebar Items */
     [data-flux-sidebar-item] {
         transition: all 0.2s ease !important;
         margin-left: 0.5rem !important;
@@ -54,9 +60,9 @@
     }
 
     [data-flux-sidebar-item][data-current] {
-        background-color: rgba(217, 160, 149, 0.15) !important; /* Soft rose background */
+        background-color: rgba(217, 160, 149, 0.15) !important;
         color: var(--color-accent) !important;
-        font-weight: 600 !important;
+        font-weight: 700 !important;
     }
 
     [data-flux-sidebar-item]:hover:not([data-current]) {
@@ -64,15 +70,13 @@
         color: var(--color-accent) !important;
     }
 
-    /* Ensure icons match */
-    [data-flux-sidebar-item][data-current] [data-flux-icon] {
-        color: var(--color-accent) !important;
+    [data-flux-brand-name] {
+        font-weight: 800 !important;
     }
 
-    /* Brand color */
-    [data-flux-sidebar] [data-flux-brand-name] {
+    /* Enhanced Boldness for all Headings */
+    [data-flux-heading] {
+        font-weight: 800 !important;
         color: var(--color-accent-foreground) !important;
-        font-weight: 700 !important;
-        font-size: 1rem !important;
     }
 </style>
