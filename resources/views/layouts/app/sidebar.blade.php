@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         @include('partials.head')
     </head>
-    <body class="min-h-screen bg-white dark:bg-zinc-800">
-        <flux:sidebar sticky collapsible="mobile" class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+    <body class="min-h-screen bg-background text-accent-foreground font-sans antialiased">
+        <flux:sidebar sticky collapsible="mobile" class="border-e border-zinc-100 bg-surface dark:border-zinc-800 dark:bg-zinc-900">
             <flux:sidebar.header>
                 <x-app-logo :sidebar="true" href="{{ route('dashboard') }}" wire:navigate />
                 <flux:sidebar.collapse class="lg:hidden" />
@@ -12,10 +12,24 @@
 
             <flux:sidebar.nav>
                 <flux:sidebar.group :heading="__('Platform')" class="grid">
-                    <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
+                    <flux:sidebar.item icon="calendar" :href="route('activities.index')" :current="request()->routeIs('activities.index')" wire:navigate>
+                        {{ __('หัวข้อกิจกรรมทั้งหมด') }}
+                    </flux:sidebar.item>
+                    <flux:sidebar.item icon="check-circle" :href="route('activities.my')" :current="request()->routeIs('activities.my')" wire:navigate>
+                        {{ __('กิจกรรมที่ลงทะเบียน') }}
                     </flux:sidebar.item>
                 </flux:sidebar.group>
+
+                @if(auth()->user()->is_admin)
+                <flux:sidebar.group :heading="__('Admin Panel')" class="grid">
+                    <flux:sidebar.item icon="layout-grid" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>
+                        {{ __('Dashboard Admin') }}
+                    </flux:sidebar.item>
+                    <flux:sidebar.item icon="clipboard" :href="route('admin.activities')" :current="request()->routeIs('admin.activities')" wire:navigate>
+                        {{ __('จัดการกิจกรรม') }}
+                    </flux:sidebar.item>
+                </flux:sidebar.group>
+                @endif
             </flux:sidebar.nav>
 
             <flux:spacer />
