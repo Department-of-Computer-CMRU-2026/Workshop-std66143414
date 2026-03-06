@@ -28,7 +28,7 @@
                 <div class="space-y-4 mb-2">
                     <!-- Speaker -->
                     <div class="flex items-start gap-2 text-lg">
-                        <div class="flex items-center gap-3 text-accent/80 shrink-0 w-[120px]">
+                        <div class="flex items-center gap-3 text-accent/80 shrink-0 w-[140px]">
                             <flux:icon name="user" size="sm" />
                             <span class="text-zinc-500 font-bold whitespace-nowrap">วิทยากร :</span>
                         </div>
@@ -37,7 +37,7 @@
 
                     <!-- Location -->
                     <div class="flex items-start gap-2 text-lg">
-                        <div class="flex items-center gap-3 text-accent/80 shrink-0 w-[120px]">
+                        <div class="flex items-center gap-3 text-accent/80 shrink-0 w-[140px]">
                             <flux:icon name="map-pin" size="sm" />
                             <span class="text-zinc-500 font-bold whitespace-nowrap">สถานที่ :</span>
                         </div>
@@ -46,12 +46,12 @@
 
                     <!-- Seats -->
                     <div class="flex items-start gap-2 text-lg">
-                        <div class="flex items-center gap-3 text-accent/80 shrink-0 w-[120px]">
+                        <div class="flex items-center gap-3 text-accent/80 shrink-0 w-[140px]">
                             <flux:icon name="users" size="sm" />
-                            <span class="text-zinc-500 font-bold whitespace-nowrap">สถานะว่าง :</span>
+                            <span class="text-zinc-500 font-bold whitespace-nowrap">ลงทะเบียนแล้ว :</span>
                         </div>
                         <div class="flex-1">
-                           <span class="font-extrabold text-accent">{{ $activity->available_seats }}</span>
+                           <span class="font-extrabold text-accent">{{ $activity->registered_count }}</span>
                            <span class="text-zinc-500 font-bold">/ {{ $activity->total_seats }} ที่นั่ง</span>
                         </div>
                     </div>
