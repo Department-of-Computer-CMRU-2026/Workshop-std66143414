@@ -34,6 +34,7 @@
                     </flux:table.cell>
                     <flux:table.cell>
                         <div class="flex gap-2">
+                            <flux:button size="sm" variant="ghost" icon="users" :href="route('admin.registrations', $activity)" wire:navigate />
                             <flux:button size="sm" variant="ghost" icon="pencil" wire:click="edit({{ $activity->id }})" />
                             <flux:button size="sm" variant="ghost" color="red" icon="trash" wire:click="delete({{ $activity->id }})" wire:confirm="ยืนยันการลบกิจกรรมนี้?" />
                         </div>

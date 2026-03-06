@@ -59,7 +59,9 @@
             </div>
 
             <div class="px-5 pb-5 mt-auto">
-                @if($isRegistered)
+                @if(auth()->user()->is_admin)
+                    <flux:button variant="primary" icon="users" class="w-full shadow-lg hover:shadow-accent/20 hover:scale-[1.02] transition-all duration-200 py-4 text-lg font-black text-white" :href="route('admin.registrations', $activity)" wire:navigate>ดูรายชื่อผู้สมัคร</flux:button>
+                @elseif($isRegistered)
                     <flux:button variant="ghost" class="w-full bg-zinc-50/50 text-zinc-400 font-bold" disabled>คุณลงทะเบียนแล้ว</flux:button>
                 @elseif($activity->is_full)
                     <flux:button variant="ghost" class="w-full bg-zinc-50/50 text-zinc-400 font-bold" disabled>ที่นั่งเต็มแล้ว</flux:button>
